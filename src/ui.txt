@@ -1,0 +1,55 @@
+const App = () => {
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white py-12 px-4">
+      <h1 className="text-4xl font-extrabold text-center text-blue-800 mb-10 tracking-wide">
+        🏆 Inter-College Quiz Scoreboard
+      </h1>
+
+      <div className="max-w-5xl mx-auto space-y-3">
+        {/* Header Row */}
+        <div className="grid grid-cols-5 text-center bg-blue-100 text-blue-800 font-bold text-lg rounded-xl py-3 shadow-sm">
+          <div className="text-left pl-4">College</div>
+          <div>Round 1</div>
+          <div>Round 2</div>
+          <div>Round 3</div>
+          <div>Total</div>
+        </div>
+
+        {/* Score Rows (you can copy this block for 10 teams) */}
+        <div className="grid grid-cols-5 items-center text-center bg-white text-gray-800 text-xl font-medium rounded-2xl px-4 py-5 shadow-md hover:bg-blue-50 transition-all duration-200">
+          <div className="text-left font-semibold text-blue-700">
+            Trinity College
+          </div>
+          <div>10</div>
+          <div>20</div>
+          <div>15</div>
+          <div className="font-bold text-blue-800">45</div>
+        </div>
+
+        <div className="grid grid-cols-5 items-center text-center bg-white text-gray-800 text-xl font-medium rounded-2xl px-4 py-5 shadow-md hover:bg-blue-50 transition-all duration-200">
+          <div className="text-left font-semibold text-blue-700">
+            Prime College
+          </div>
+          <div>12</div>
+          <div>18</div>
+          <div>20</div>
+          <div className="font-bold text-blue-800">50</div>
+        </div>
+
+        <div className="grid grid-cols-5 items-center text-center bg-white text-gray-800 text-xl font-medium rounded-2xl px-4 py-5 shadow-md hover:bg-blue-50 transition-all duration-200">
+          <div className="text-left font-semibold text-blue-700">
+            Softwarica
+          </div>
+          <div>8</div>
+          <div>15</div>
+          <div>22</div>
+          <div className="font-bold text-blue-800">45</div>
+        </div>
+
+        {/* Add more rows as needed */}
+      </div>
+    </div>
+  );
+};
+
+export default App;
