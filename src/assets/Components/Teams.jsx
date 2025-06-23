@@ -26,37 +26,25 @@ export default function Team({ value }) {
     setTotal(totalofthree);
   }, [numbers]);
 
+  console.log(total);
+
   return (
-    <div className="grid grid-cols-[30%_repeat(4,1fr)] bg-white text-gray-800 text-lg rounded-xl h-16 items-center text-center shadow-sm divide-x divide-gray-200">
-      <div className="text-left pl-4 font-semibold text-blue-700 flex items-center h-full">
+    <div className="grid grid-cols-[40%_repeat(4,1fr)] bg-white text-gray-800 text-base rounded-xl h-12 items-center text-center shadow-sm divide-x divide-gray-200">
+      <div className="text-left pl-3 font-semibold text-blue-700 flex items-center h-full">
         {value}
       </div>
 
-      <div className="flex justify-center items-center h-full">
-        <Calculator
-          value={numbers[0]}
-          onClickx={() => incrementAtIndex(0)}
-          onClicky={() => decrementAtIndex(0)}
-        />
-      </div>
+      {[0, 1, 2].map((index) => (
+        <div key={index} className="flex justify-center items-center h-full">
+          <Calculator
+            value={numbers[index]}
+            onClickx={() => incrementAtIndex(index)}
+            onClicky={() => decrementAtIndex(index)}
+          />
+        </div>
+      ))}
 
-      <div className="flex justify-center items-center h-full">
-        <Calculator
-          value={numbers[1]}
-          onClickx={() => incrementAtIndex(1)}
-          onClicky={() => decrementAtIndex(1)}
-        />
-      </div>
-
-      <div className="flex justify-center items-center h-full">
-        <Calculator
-          value={numbers[2]}
-          onClickx={() => incrementAtIndex(2)}
-          onClicky={() => decrementAtIndex(2)}
-        />
-      </div>
-
-      <div className="flex justify-center items-center h-full font-bold text-blue-800 text-2xl">
+      <div className="flex justify-center items-center h-full font-bold text-blue-800 text-xl">
         {total}
       </div>
     </div>
