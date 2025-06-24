@@ -1,40 +1,49 @@
-import { useState } from "react";
+// import { useState } from "react";
+// import Team from "../Components/Teams";
+// import { useNavigate } from "react-router-dom";
+
+// const colleges = [
+//   "Harvard University",
+//   "Stanford University",
+//   "Massachusetts Institute of Technology",
+//   "University of Oxford",
+//   "University of Cambridge",
+//   "California Institute of Technology",
+//   "Princeton University",
+//   "Yale University",
+//   "University of California, Berkeley",
+//   "Columbia University",
+// ];
+
+// export default function Home() {
+//   const navigate = useNavigate();
+//   const [teams, setTeams] = useState(
+//     colleges.map((name) => ({ name, scores: [0, 0, 0], total: 0 }))
+//   );
+
+//   function changeScore(teamIdx, roundIdx, delta) {
+//     setTeams((prev) => {
+//       const next = [...prev];
+//       const team = { ...next[teamIdx] };
+//       const scoresCopy = [...team.scores];
+
+//       scoresCopy[roundIdx] = Math.max(0, scoresCopy[roundIdx] + delta);
+//       team.scores = scoresCopy;
+//       team.total = scoresCopy.reduce((a, b) => a + b, 0);
+
+//       next[teamIdx] = team;
+//       return next;
+//     });
+//   }
+
 import Team from "../Components/Teams";
+import { useContext } from "react";
+import { Datahere } from "../Context/FileContext";
 import { useNavigate } from "react-router-dom";
 
-const colleges = [
-  "Harvard University",
-  "Stanford University",
-  "Massachusetts Institute of Technology",
-  "University of Oxford",
-  "University of Cambridge",
-  "California Institute of Technology",
-  "Princeton University",
-  "Yale University",
-  "University of California, Berkeley",
-  "Columbia University",
-];
-
 export default function Home() {
+  const { teams, changeScore } = useContext(Datahere);
   const navigate = useNavigate();
-  const [teams, setTeams] = useState(
-    colleges.map((name) => ({ name, scores: [0, 0, 0], total: 0 }))
-  );
-
-  function changeScore(teamIdx, roundIdx, delta) {
-    setTeams((prev) => {
-      const next = [...prev];
-      const team = { ...next[teamIdx] };
-      const scoresCopy = [...team.scores];
-
-      scoresCopy[roundIdx] = Math.max(0, scoresCopy[roundIdx] + delta);
-      team.scores = scoresCopy;
-      team.total = scoresCopy.reduce((a, b) => a + b, 0);
-
-      next[teamIdx] = team;
-      return next;
-    });
-  }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-blue-200 px-4 py-4 flex flex-col items-center">
@@ -68,13 +77,22 @@ export default function Home() {
       </div>
 
       {/* Winner List Button */}
-      <button
-        onClick={() => navigate("/winner", { state: teams })}
-        className="mt-3 bg-blue-600 hover:bg-blue-700  text-white font-semibold
+      <div className="flex space-x-20">
+        <button
+          onClick={() => navigate("/winner", { state: teams })}
+          className="mt-3 bg-blue-600 hover:bg-blue-700  text-white font-semibold
          py-2 px-5 rounded-xl shadow-lg transition "
-      >
-        View Winner List
-      </button>
+        >
+          View Winner List
+        </button>
+        <button
+          onClick={() => window.location.reload()}
+          className="mt-3 bg-blue-600 hover:bg-blue-700  text-white font-semibold
+         py-2 px-5 rounded-xl shadow-lg transition "
+        >
+          🔄 Clear Data
+        </button>
+      </div>
     </div>
   );
 }

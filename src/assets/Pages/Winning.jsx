@@ -1,8 +1,10 @@
 import { useNavigate, useLocation } from "react-router-dom";
+import { Datahere } from "../Context/FileContext";
+import { useContext } from "react";
 
 export default function Winning() {
+  const { teams } = useContext(Datahere);
   const navigate = useNavigate();
-  const { state: teams = [] } = useLocation(); // fallback if undefined
 
   const winners = [...teams].sort((a, b) => b.total - a.total);
 
@@ -14,9 +16,11 @@ export default function Winning() {
         </h1>
 
         {/* Winner List with Max Height */}
-        <ol className="bg-white shadow rounded-lg border-2 border-black
+        <ol
+          className="bg-white shadow rounded-lg border-2 border-black
         bg-gradient-to-b from-blue-160 to-blue-100
-        overflow-y-auto max-h-[80vh] divide-y divide-gray-200 p-10">
+        overflow-y-auto max-h-[80vh] divide-y divide-gray-200 p-10"
+        >
           {winners.map((t, i) => (
             <li
               key={t.name}
@@ -50,13 +54,14 @@ export default function Winning() {
           ))}
         </ol>
 
-        <div className="text-center mt-4">
+        <div className="text-center mt-4 ">
           <button
             onClick={() => navigate("/")}
             className="bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2 rounded shadow transition"
           >
             🔙 Back
           </button>
+       
         </div>
       </div>
     </div>
